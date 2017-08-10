@@ -1,0 +1,29 @@
+plugins {
+    id "java-gradle-plugin"
+}
+
+gradlePlugin {
+    plugins {
+        yourOwnPlugin {
+            id = "my.company.your-own-plugin"
+            implementationClass = "my.company.YourOwnPlugin"
+        }
+    }
+}
+
+apply plugin: 'groovy'
+
+task wrapper(type:Wrapper) {
+  gradleVersion="3.4"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
+        exclude module: 'groovy-all'
+    }
+    testCompile 'junit:junit:4.12'
+}
