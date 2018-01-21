@@ -3,7 +3,7 @@
 # gradle-plugin-release
 Under Construction
 
-Handling releases. Based on ajoberstar'sgradle plugins and inspired by netflix nebula gradle plugin
+Handling releases. Based on ajoberstar's gradle plugins and inspired by netflix nebula gradle plugin
 
 # TODO
 Lots of stuff, I am sure, but the overall vision is like so:
@@ -60,3 +60,11 @@ dsRelease {
     whateverFlagsWeNeedToMakeThisWorkTheWayWeWantTo = true
 }
 ```
+
+# Versions
+## 0.0.2
+* published to gradle portal
+* Configures release plugin, but not exactly like done at Danske Spil
+
+## 0.0.3
+*
