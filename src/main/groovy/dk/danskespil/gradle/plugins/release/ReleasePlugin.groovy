@@ -15,7 +15,7 @@ class ReleasePlugin implements Plugin<Project> {
     }
 
     private void configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(Project project) {
-        // See also https://github.com/ajoberstar/gradle-git
+        // See https://github.com/ajoberstar/gradle-git
         project.plugins.apply('org.ajoberstar.release-base')
 
         project.release {
@@ -23,29 +23,10 @@ class ReleasePlugin implements Plugin<Project> {
             versionStrategy Strategies.DEVELOPMENT
             versionStrategy Strategies.PRE_RELEASE
             versionStrategy Strategies.FINAL
-            defaultVersionStrategy = Strategies.DEVELOPMENT
+            defaultVersionStrategy = Strategies.SNAPSHOT
             tagStrategy {
-                generateMessage = { version ->
-                    StringBuilder builder = new StringBuilder()
-                    builder << 'Releasing of '
-                    builder << version.version
-                    builder << '\n\n'
-
-                    String previousVersion = "${project.release.tagStrategy.toTagString(version.previousVersion)}^{commit}"
-                    List excludes = []
-                    if (tagExists(grgit, previousVersion)) {
-                        excludes << previousVersion
-                    }
-                    grgit.log(
-                            includes: ['HEAD'],
-                            excludes: excludes
-                    ).inject(builder) { bldr, commit ->
-                        bldr << '- '
-                        bldr << commit.shortMessage
-                        bldr << '\n'
-                    }
-                    builder.toString()
-                }
+                generateMessage = { version -> "My new version $version.version" }
+                prefixNameWithV = false // defaults to true
             }
         }
     }
