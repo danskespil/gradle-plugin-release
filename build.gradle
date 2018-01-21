@@ -17,7 +17,7 @@ plugins {
 group 'dk.danskespil.gradle.plugins'
 // Since this is a release plugin, and its not finished yet, it will handle version numbers manually until its production ready.
 // This means that you have to bump this number manually according to semVer principles.
-version = '0.0.3'
+//version = '0.0.3'
 
 apply plugin: 'groovy'
 
