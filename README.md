@@ -52,7 +52,7 @@ release {
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release' version '0.0.3'
+    id 'dk.danskespil.gradle.plugins.release' version '0.0.4'
 }
 
 dsRelease {
