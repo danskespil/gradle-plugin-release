@@ -19,6 +19,7 @@ class ReleasePlugin implements Plugin<Project> {
         project.plugins.apply('org.ajoberstar.release-base')
 
         project.release {
+            grgit = org.ajoberstar.grgit.Grgit.open()
             versionStrategy RebuildVersionStrategy.INSTANCE
             versionStrategy Strategies.DEVELOPMENT
             versionStrategy Strategies.PRE_RELEASE
