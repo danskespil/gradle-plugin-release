@@ -53,7 +53,7 @@ This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
     // ajoberstar working example: https://github.com/katharsis-project/katharsis-vertx/blob/master/build.gradle
-    id 'org.danskespil.gradle.plugins.release' version '0.0.1'
+    id 'org.danskespil.gradle.plugins.release' version '0.0.3'
 }
 
 dsRelease {
@@ -67,4 +67,6 @@ dsRelease {
 * Configures release plugin, but not exactly like done at Danske Spil
 
 ## 0.0.3
-*
+* If you use this version of the plugin, you will have the same configuration as when including "AS IS Strategy"
+
+## 0.0.4
