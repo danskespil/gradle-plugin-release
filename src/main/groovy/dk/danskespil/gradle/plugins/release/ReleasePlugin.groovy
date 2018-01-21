@@ -27,7 +27,7 @@ class ReleasePlugin implements Plugin<Project> {
             tagStrategy {
                 generateMessage = { version ->
                     StringBuilder builder = new StringBuilder()
-                    builder << 'Release of '
+                    builder << 'Releasing of '
                     builder << version.version
                     builder << '\n\n'
 
