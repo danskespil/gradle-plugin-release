@@ -4,17 +4,19 @@ plugins {
 
 gradlePlugin {
     plugins {
-        yourOwnPlugin {
-            id = "my.company.your-own-plugin"
-            implementationClass = "my.company.YourOwnPlugin"
+        releasePlugin {
+            id = "dk.danskespil.gradle.plugins.release"
+            implementationClass = 'dk.danskespil.gradle.plugins.release.ReleasePlugin'
         }
     }
 }
 
 apply plugin: 'groovy'
 
+group 'dk.danskespil.gradle.plugins'
+
 task wrapper(type:Wrapper) {
-  gradleVersion="3.4"
+  gradleVersion="4.4.1"
 }
 
 repositories {

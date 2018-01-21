@@ -6,8 +6,8 @@ Handling releases. Based on ajoberstar xx gradle plugins and inspired by netflix
 # TODO
 Lots of stuff, I am sure, but the overall vision is like so:
 
-* Get the basic plugin working with git, travis, oss, ...
-  * use latest gradle version
+* DONE Get the basic plugin working with git, travis, oss, ...
+  * DONE use latest gradle version.
 * Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
 * Publish it to gradle plugin portal
 * Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
@@ -58,4 +58,3 @@ dsRelease {
     whateverFlagsWeNeedToMakeThisWorkTheWayWeWantTo = true
 }
 ```
-.
