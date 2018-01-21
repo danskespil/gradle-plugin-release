@@ -1,20 +1,11 @@
 package dk.danskespil.gradle.plugins.release
 
+import dk.danskespil.gradle.test.spock.helpers.TemporaryFolderSpecification
 import org.gradle.testkit.runner.GradleRunner
-import org.junit.Rule
-import org.junit.rules.TemporaryFolder
-import spock.lang.Specification
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 
-class ReleasePluginSpockTest extends Specification {
-    @Rule final TemporaryFolder testProjectDir = new TemporaryFolder()
-    File buildFile
-
-    def setup() {
-        buildFile = testProjectDir.newFile('build.gradle')
-    }
-
+class ReleasePluginSpockTest extends TemporaryFolderSpecification {
     def "The plugin can be applied"() {
         given:
         buildFile << """
