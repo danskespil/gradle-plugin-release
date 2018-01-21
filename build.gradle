@@ -9,12 +9,15 @@ buildscript {
 }
 plugins {
     id "java-gradle-plugin"
+    id 'org.ajoberstar.grgit' version '1.7.2'
+    id 'org.ajoberstar.release-base' version '1.7.2'
+    //id "dk.danskespil.gradle.plugins.release" version "0.0.2"
 }
 
 group 'dk.danskespil.gradle.plugins'
 // Since this is a release plugin, and its not finished yet, it will handle version numbers manually until its production ready.
 // This means that you have to bump this number manually according to semVer principles.
-version = '0.0.2-SNAPSHOT'
+version = '0.0.3'
 
 apply plugin: 'groovy'
 
@@ -27,8 +30,8 @@ gradlePlugin {
     }
 }
 
-task wrapper(type:Wrapper) {
-  gradleVersion="4.4.1"
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.4.1"
 }
 
 repositories {
@@ -36,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.ajoberstar:gradle-git:1.7.1'
+    compile 'org.ajoberstar:gradle-git:1.7.2'
     compile 'dk.danskespil.gradle.plugins:gradle-task-helpers:0.0.3'
     testCompile 'dk.danskespil.gradle.plugins:gradle-plugin-test-spock-helpers:0.1.2'
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
@@ -50,7 +53,7 @@ apply plugin: "com.gradle.plugin-publish"
 pluginBundle {
     website = 'https://github.com/danskespil/gradle-plugin-release'
     vcsUrl = 'https://github.com/danskespil/gradle-plugin-release'
-    description = 'Terraform plugin'
+    description = 'Release plugin'
 
     plugins {
         terraformPlugin {

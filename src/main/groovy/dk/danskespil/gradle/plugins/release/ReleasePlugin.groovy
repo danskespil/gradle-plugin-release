@@ -10,12 +10,12 @@ import org.gradle.api.Project
 class ReleasePlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        ReleasePluginExtension extension = project.extensions.create("dsRelease", ReleasePluginExtension)
-
+        //ReleasePluginExtension extension = project.extensions.create("dsRelease", ReleasePluginExtension)
         configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(project)
     }
 
     private void configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(Project project) {
+        // See also https://github.com/ajoberstar/gradle-git
         project.plugins.apply('org.ajoberstar.release-base')
 
         project.release {
