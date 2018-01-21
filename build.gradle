@@ -14,7 +14,7 @@ plugins {
 group 'dk.danskespil.gradle.plugins'
 // Since this is a release plugin, and its not finished yet, it will handle version numbers manually until its production ready.
 // This means that you have to bump this number manually according to semVer principles.
-version = '0.0.1'
+version = '0.0.2-SNAPSHOT'
 
 apply plugin: 'groovy'
 
@@ -36,6 +36,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.ajoberstar:gradle-git:1.7.1'
     compile 'dk.danskespil.gradle.plugins:gradle-task-helpers:0.0.3'
     testCompile 'dk.danskespil.gradle.plugins:gradle-plugin-test-spock-helpers:0.1.2'
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
