@@ -3,7 +3,7 @@
 # gradle-plugin-release
 Under Construction
 
-Handling releases. Based on ajoberstar xx gradle plugins and inspired by netflix nebula gradle plugin
+Handling releases. Based on ajoberstar'sgradle plugins and inspired by netflix nebula gradle plugin
 
 # TODO
 Lots of stuff, I am sure, but the overall vision is like so:
