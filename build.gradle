@@ -11,24 +11,20 @@ plugins {
     id "java-gradle-plugin"
     id 'org.ajoberstar.grgit' version '1.7.2'
     id 'org.ajoberstar.release-base' version '1.7.2'
-//    id "dk.danskespil.gradle.plugins.release" version "0.0.3"
 }
 
-
+// BEGIN Allow plugin to use itself
 def classpaths = [file('src/main/groovy').absolutePath, file('src/main/resources').absolutePath]
 // The groovy script engine wants a string array
 String[] classpathArray = classpaths.toArray(new String[classpaths.size()]);
 // Start a groovy script engine with our classpaths
 def engine = new GroovyScriptEngine(classpathArray, this.getClass().getClassLoader())
 // Now we can load the plugin script
-def pluginClass = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleasePlugin.groovy')
-
-apply plugin: pluginClass
+def thisPlugin = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleasePlugin.groovy')
+apply plugin: thisPlugin
+// END Allow plugin to use itself
 
 group 'dk.danskespil.gradle.plugins'
-// Since this is a release plugin, and its not finished yet, it will handle version numbers manually until its production ready.
-// This means that you have to bump this number manually according to semVer principles.
-//version = '0.0.3'
 
 apply plugin: 'groovy'
 
