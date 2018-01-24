@@ -11,16 +11,19 @@ plugins {
     id "java-gradle-plugin"
     id 'org.ajoberstar.grgit' version '1.7.2'
     id 'org.ajoberstar.release-base' version '1.7.2'
+    // I need the release opinion plugin, but since its part of release-base, Its present when using plugin
+    // release-base. Its loaded directly in ReleaseClassicPlugin
+    // id 'org.ajoberstar.release-opinion' version '1.7.2'
 }
 
 // BEGIN Allow plugin to use itself
 def classpaths = [file('src/main/groovy').absolutePath, file('src/main/resources').absolutePath]
 // The groovy script engine wants a string array
-String[] classpathArray = classpaths.toArray(new String[classpaths.size()]);
+String[] classpathArray = classpaths.toArray(new String[classpaths.size()])
 // Start a groovy script engine with our classpaths
 def engine = new GroovyScriptEngine(classpathArray, this.getClass().getClassLoader())
 // Now we can load the plugin script
-def thisPlugin = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleasePlugin.groovy')
+def thisPlugin = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleaseClassicPlugin.groovy')
 apply plugin: thisPlugin
 // END Allow plugin to use itself
 
@@ -31,8 +34,8 @@ apply plugin: 'groovy'
 gradlePlugin {
     plugins {
         releasePlugin {
-            id = "dk.danskespil.gradle.plugins.release"
-            implementationClass = 'dk.danskespil.gradle.plugins.release.ReleasePlugin'
+            id = "dk.danskespil.gradle.plugins.release-classic"
+            implementationClass = 'dk.danskespil.gradle.plugins.release.ReleaseClassicPlugin'
         }
     }
 }
@@ -63,10 +66,10 @@ pluginBundle {
     description = 'Release plugin'
 
     plugins {
-        terraformPlugin {
-            id = 'dk.danskespil.gradle.plugins.release'
-            displayName = 'Release plugin'
-            description = 'Handles releasing with versions, takes care of tagging in git and inference of version numbers. Based on ajoberstar gradle plugins and inspired by netflix nebula gradle plugin'
+        releaseclassicPlugin {
+            id = 'dk.danskespil.gradle.plugins.release-classic'
+            displayName = 'Release plugin classic'
+            description = 'Handles releasing with versions, takes care of tagging in git and inference of version numbers. Based on ajoberstar gradle plugins and inspired by netflix nebula gradle plugin. Slightly opiniated'
             tags = ['release', 'nebula', 'danskespil']
         }
     }

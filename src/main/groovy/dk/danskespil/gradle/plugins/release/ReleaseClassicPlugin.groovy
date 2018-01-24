@@ -1,13 +1,12 @@
 package dk.danskespil.gradle.plugins.release
 
 import org.ajoberstar.gradle.git.release.opinion.Strategies
-import org.ajoberstar.gradle.git.release.semver.RebuildVersionStrategy
 import org.ajoberstar.grgit.Grgit
 import org.ajoberstar.grgit.exception.GrgitException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class ReleasePlugin implements Plugin<Project> {
+class ReleaseClassicPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         //ReleasePluginExtension extension = project.extensions.create("dsRelease", ReleasePluginExtension)
@@ -17,17 +16,27 @@ class ReleasePlugin implements Plugin<Project> {
     private void configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(Project project) {
         // See https://github.com/ajoberstar/gradle-git
         project.plugins.apply('org.ajoberstar.release-base')
+        project.plugins.apply('org.ajoberstar.release-opinion')
 
+        // This is what the classical copy/paste solution looks like
+        //        release {
+        //            grgit = org.ajoberstar.grgit.Grgit.open()
+        //            defaultVersionStrategy = Strategies.SNAPSHOT
+        //            versionStrategy Strategies.SNAPSHOT
+        //            tagStrategy {
+        //                prefixNameWithV = false // defaults to true
+        //                generateMessage = { version -> "My new version $version.version" }
+        //            }
+        //        }
+
+        // This would seem to be the equivalent, only configured in this plugin
         project.release {
             grgit = org.ajoberstar.grgit.Grgit.open()
-            versionStrategy RebuildVersionStrategy.INSTANCE
-            versionStrategy Strategies.DEVELOPMENT
-            versionStrategy Strategies.PRE_RELEASE
-            versionStrategy Strategies.FINAL
             defaultVersionStrategy = Strategies.SNAPSHOT
+            versionStrategy Strategies.SNAPSHOT
             tagStrategy {
-                generateMessage = { version -> "My new version $version.version" }
                 prefixNameWithV = false // defaults to true
+                generateMessage = { version -> "My new version $version.version" }
             }
         }
     }

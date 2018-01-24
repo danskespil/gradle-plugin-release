@@ -5,12 +5,12 @@ import org.gradle.testkit.runner.GradleRunner
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 
-class ReleasePluginSpockTest extends TemporaryFolderSpecification {
+class ReleaseClassicPluginSpockTest extends TemporaryFolderSpecification {
     def "The plugin can be applied"() {
         given:
         buildFile << """
             plugins {
-                id 'dk.danskespil.gradle.plugins.release'
+                id 'dk.danskespil.gradle.plugins.release-classic'
             }
             task helloWorld {
                 doLast {

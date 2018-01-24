@@ -5,16 +5,36 @@ Under Construction
 
 Handling releases. Based on ajoberstar's gradle plugins and inspired by netflix nebula gradle plugin
 
+Aims to provide 2 plugins:
+
+1. release-classic
+
+included like this
+```groovy
+plugins {
+    id 'dk.danskespil.gradle.plugins.release-classic' version 'VERSION'
+}
+```
+
+2. release-branch
+included like this
+```groovy
+plugins {
+    id 'dk.danskespil.gradle.plugins.release-branch' version 'VERSION'
+}
+```
+
 # TODO
 Lots of stuff, I am sure, but the overall vision is like so:
 
 * DONE Get the basic plugin working with git, travis, oss, ...
   * DONE use latest gradle version.
 * DONE Publish it to gradle plugin portal
-* Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
+* DONE Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
 * Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
-* Let the plugin be released by itself
+* DONE When releasing this plugin, use its own code to release it
 * Configure the plugin to (allow for ?) inclusion of branch name in release tags
+* Figure out how multiple gradle plugin portal users can deploy the same plugin
 
 # Strategies
 
@@ -52,12 +72,19 @@ release {
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release' version '0.0.4'
+    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.4'
 }
 
 dsRelease {
     whateverFlagsWeNeedToMakeThisWorkTheWayWeWantTo = true
 }
+```
+
+# Releasing this plugin
+## To gradles plugin portal
+Note: you need a login to do this
+```groovy
+gw clean build release publishPlugins -Prelease.stage=final -Prelease.scope=patch
 ```
 
 # Versions
@@ -70,3 +97,6 @@ dsRelease {
 
 ## 0.0.4
 * Fix missing call to grgit.open(), causing "Caused by: java.lang.NullPointerException: Cannot invoke method status() on null object"
+
+## 0.0.5
+* rename plugin id to dk.danskespil.gradle.plugins.release-classic
