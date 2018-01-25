@@ -9,7 +9,6 @@ import org.gradle.api.Project
 class ReleaseClassicPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        //ReleasePluginExtension extension = project.extensions.create("dsRelease", ReleasePluginExtension)
         configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(project)
     }
 
