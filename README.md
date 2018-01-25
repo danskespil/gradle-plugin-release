@@ -24,6 +24,42 @@ plugins {
 }
 ```
 
+# Migrate into using this plugin
+## local configuration into release-classic
+Replace
+```groovy
+plugins {
+    // ajoberstar working example: https://github.com/katharsis-project/katharsis-vertx/blob/master/build.gradle
+    id 'org.ajoberstar.grgit' version '1.7.1'
+    id 'org.ajoberstar.release-opinion' version '1.7.1'
+}
+
+//// START This block has to be after "apply plugin: 'maven'"
+// https://github.com/ajoberstar/gradle-git/wiki/Release%20Plugins
+// to deploy as maven artifact
+apply plugin: 'maven'
+
+import org.ajoberstar.gradle.git.release.opinion.Strategies
+
+release {
+    grgit = org.ajoberstar.grgit.Grgit.open()
+    defaultVersionStrategy = Strategies.SNAPSHOT
+    versionStrategy Strategies.SNAPSHOT
+    tagStrategy {
+        prefixNameWithV = false // defaults to true
+        generateMessage = { version -> "My new version $version.version" }
+    }
+}
+```
+with
+```groovy
+plugins {
+    id 'dk.danskespil.gradle.plugins.release-classic' version 'VERSION'
+}
+```
+## local configuration or release-classic into release-branch
+TODO (write it when you know exactly how it works)
+
 # TODO
 Lots of stuff, I am sure, but the overall vision is like so:
 
@@ -72,11 +108,7 @@ release {
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.4'
-}
-
-dsRelease {
-    whateverFlagsWeNeedToMakeThisWorkTheWayWeWantTo = true
+    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.5'
 }
 ```
 
