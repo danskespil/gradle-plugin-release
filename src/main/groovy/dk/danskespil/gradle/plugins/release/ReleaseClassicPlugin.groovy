@@ -9,7 +9,6 @@ import org.gradle.api.Project
 class ReleaseClassicPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        //ReleasePluginExtension extension = project.extensions.create("dsRelease", ReleasePluginExtension)
         configureGrGitReleasePluginLikeWeDoWithCopyPasteInEveryProject(project)
     }
 
@@ -38,15 +37,6 @@ class ReleaseClassicPlugin implements Plugin<Project> {
                 prefixNameWithV = false // defaults to true
                 generateMessage = { version -> "My new version $version.version" }
             }
-        }
-    }
-
-    private boolean tagExists(Grgit grgit, String revStr) {
-        try {
-            grgit.resolve.toCommit(revStr)
-            return true
-        } catch (GrgitException e) {
-            return false
         }
     }
 }
