@@ -39,13 +39,4 @@ class ReleaseClassicPlugin implements Plugin<Project> {
             }
         }
     }
-
-    private boolean tagExists(Grgit grgit, String revStr) {
-        try {
-            grgit.resolve.toCommit(revStr)
-            return true
-        } catch (GrgitException e) {
-            return false
-        }
-    }
 }

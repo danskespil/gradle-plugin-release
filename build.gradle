@@ -23,7 +23,7 @@ String[] classpathArray = classpaths.toArray(new String[classpaths.size()])
 // Start a groovy script engine with our classpaths
 def engine = new GroovyScriptEngine(classpathArray, this.getClass().getClassLoader())
 // Now we can load the plugin script
-def thisPlugin = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleaseClassicPlugin.groovy')
+def thisPlugin = engine.loadScriptByName('dk/danskespil/gradle/plugins/release/ReleaseBranchPlugin.groovy')
 apply plugin: thisPlugin
 // END Allow plugin to use itself
 
@@ -33,9 +33,13 @@ apply plugin: 'groovy'
 
 gradlePlugin {
     plugins {
-        releasePlugin {
+        releaseClassicPlugin {
             id = "dk.danskespil.gradle.plugins.release-classic"
             implementationClass = 'dk.danskespil.gradle.plugins.release.ReleaseClassicPlugin'
+        }
+        releaseBranchPlugin {
+            id = "dk.danskespil.gradle.plugins.release-branch"
+            implementationClass = 'dk.danskespil.gradle.plugins.release.RelaseBranchPlugin'
         }
     }
 }
@@ -66,10 +70,16 @@ pluginBundle {
     description = 'Release plugin'
 
     plugins {
-        releaseclassicPlugin {
+        releaseClassicPlugin {
             id = 'dk.danskespil.gradle.plugins.release-classic'
             displayName = 'Release plugin classic'
             description = 'Handles releasing with versions, takes care of tagging in git and inference of version numbers. Based on ajoberstar gradle plugins and inspired by netflix nebula gradle plugin. Slightly opiniated'
+            tags = ['release', 'nebula', 'danskespil']
+        }
+        releaseBranchPlugin {
+            id = 'dk.danskespil.gradle.plugins.release-branch'
+            displayName = 'Release plugin branch'
+            description = 'Handles releasing with versions, takes care of tagging in git and inference of version numbers. Based on ajoberstar gradle plugins and inspired by netflix nebula gradle plugin. Slightly opiniated. Can add branch names into tags and inferred versions'
             tags = ['release', 'nebula', 'danskespil']
         }
     }
