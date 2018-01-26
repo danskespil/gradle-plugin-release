@@ -104,12 +104,24 @@ release {
     }
 }
 ```
-## TO BE Strategy
+## TO BE Strategy classic
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.5'
+    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.8'
 }
+// all the usual, e.g.
+gw clean build release -Prelease.stage=branch -Prelease.scope=patch
+```
+
+## TO BE Strategy branch
+This is how we envision it to be done after writing this plugin
+```groovy
+plugins {
+    id 'dk.danskespil.gradle.plugins.release-branch' version '0.0.8'
+}
+// now you have this extra stage 'branch'
+gw clean build release -Prelease.stage=branch -Prelease.scope=patch
 ```
 
 # Releasing this plugin
@@ -132,3 +144,6 @@ gw clean build release publishPlugins -Prelease.stage=final -Prelease.scope=patc
 
 ## 0.0.5
 * rename plugin id to dk.danskespil.gradle.plugins.release-classic
+
+## 0.0.8 
+* release-branch plugin has initial release
