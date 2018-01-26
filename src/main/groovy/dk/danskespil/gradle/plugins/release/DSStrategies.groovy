@@ -15,6 +15,7 @@ class DSStrategies {
             createTag: true
     )
 
+    
     static final class PreRelease {
         static final PartialSemVerStrategy BRANCH = closure { state -> state.copyWith(inferredPreRelease: state.currentBranch.name) }
     }
