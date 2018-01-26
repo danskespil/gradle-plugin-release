@@ -39,7 +39,7 @@ gradlePlugin {
         }
         releaseBranchPlugin {
             id = "dk.danskespil.gradle.plugins.release-branch"
-            implementationClass = 'dk.danskespil.gradle.plugins.release.RelaseBranchPlugin'
+            implementationClass = 'dk.danskespil.gradle.plugins.release.ReleaseBranchPlugin'
         }
     }
 }
