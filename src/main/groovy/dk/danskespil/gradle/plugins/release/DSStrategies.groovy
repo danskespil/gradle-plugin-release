@@ -10,13 +10,12 @@ class DSStrategies {
     static final SemVerStrategy BRANCH = Strategies.DEFAULT.copyWith(
             name: 'branch',
             stages: ['branch'] as SortedSet,
-            allowDirtyRepo: true,
+            allowDirtyRepo: false,
             preReleaseStrategy: PreRelease.BRANCH,
-            createTag: false
+            createTag: true
     )
 
     static final class PreRelease {
         static final PartialSemVerStrategy BRANCH = closure { state -> state.copyWith(inferredPreRelease: state.currentBranch.name) }
     }
-
 }
