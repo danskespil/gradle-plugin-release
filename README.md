@@ -30,8 +30,8 @@ Replace
 ```groovy
 plugins {
     // ajoberstar working example: https://github.com/katharsis-project/katharsis-vertx/blob/master/build.gradle
-    id 'org.ajoberstar.grgit' version '1.7.1'
-    id 'org.ajoberstar.release-opinion' version '1.7.1'
+    id 'org.ajoberstar.grgit' version '1.7.2'
+    id 'org.ajoberstar.release-opinion' version '1.7.2'
 }
 
 //// START This block has to be after "apply plugin: 'maven'"
@@ -67,9 +67,9 @@ Lots of stuff, I am sure, but the overall vision is like so:
   * DONE use latest gradle version.
 * DONE Publish it to gradle plugin portal
 * DONE Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
-* Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
+* IN PROGRESS Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
 * DONE When releasing this plugin, use its own code to release it
-* Configure the plugin to (allow for ?) inclusion of branch name in release tags
+* IN PROGRESS Configure the plugin to (allow for ?) inclusion of branch name in release tags
 * Figure out how multiple gradle plugin portal users can deploy the same plugin
 
 # Strategies
@@ -147,3 +147,6 @@ gw clean build release publishPlugins -Prelease.stage=final -Prelease.scope=patc
 
 ## 0.0.8 
 * release-branch plugin has initial release
+
+## 0.0.9 
+* Bump underlying ajoberstar plugin
