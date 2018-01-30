@@ -18,8 +18,8 @@ class DSStrategies {
 
 
     static final class PreRelease {
-        String shortenedBranch = state.currentBranch.name.replaceAll(/[\/]/, '-')
-
-        static final PartialSemVerStrategy BRANCH = closure { state -> state.copyWith(inferredPreRelease: shortenedBranch) }
+        static final PartialSemVerStrategy BRANCH = closure { state ->
+            String shortenedBranch = state.currentBranch.name.replaceAll(/[\/]/, '-')
+            state.copyWith(inferredPreRelease: shortenedBranch) }
     }
 }
