@@ -20,6 +20,7 @@ class DSStrategies {
     static final class PreRelease {
         static final PartialSemVerStrategy BRANCH = closure { state ->
             String shortenedBranch = state.currentBranch.name.replaceAll(/[\/]/, '-')
-            state.copyWith(inferredPreRelease: shortenedBranch) }
+            state.copyWith(inferredPreRelease: shortenedBranch)
+        }
     }
 }
