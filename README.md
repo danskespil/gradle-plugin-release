@@ -67,7 +67,7 @@ Lots of stuff, I am sure, but the overall vision is like so:
   * DONE use latest gradle version.
 * DONE Publish it to gradle plugin portal
 * DONE Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
-* IN PROGRESS Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
+* DONE Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
 * DONE When releasing this plugin, use its own code to release it
 * IN PROGRESS Configure the plugin to (allow for ?) inclusion of branch name in release tags
 * Figure out how multiple gradle plugin portal users can deploy the same plugin
