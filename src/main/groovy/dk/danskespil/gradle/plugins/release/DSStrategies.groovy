@@ -34,7 +34,7 @@ class DSStrategies {
         static final PartialSemVerStrategy BRANCH = closure { state ->
 
             /// Remove all '/' from branch name
-            String shortenedBranch = state.currentBranch.name.replaceAll(/[\/]/, '-')
+            String shortenedBranch = state.currentBranch.name.replaceAll(/[\/_]/, '-')
 
             // Get Nearest any version as string
             def nearest = ''+state.nearestVersion.any
