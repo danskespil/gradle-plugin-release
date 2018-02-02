@@ -69,7 +69,7 @@ Lots of stuff, I am sure, but the overall vision is like so:
 * DONE Build a plugin that configures ajoberstar like we currently do at Danske Spil (see AS IS Strategy) 
 * DONE Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
 * DONE When releasing this plugin, use its own code to release it
-* IN PROGRESS Configure the plugin to (allow for ?) inclusion of branch name in release tags
+* DONE Configure the plugin to (allow for ?) inclusion of branch name in release tags
 * Figure out how multiple gradle plugin portal users can deploy the same plugin
 
 # Strategies
@@ -108,17 +108,17 @@ release {
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release-classic' version '0.0.8'
+    id 'dk.danskespil.gradle.plugins.release-classic' version '0.1.2'
 }
 // all the usual, e.g.
-gw clean build release -Prelease.stage=branch -Prelease.scope=patch
+gw clean build release -Prelease.stage=milestone -Prelease.scope=patch
 ```
 
 ## TO BE Strategy branch
 This is how we envision it to be done after writing this plugin
 ```groovy
 plugins {
-    id 'dk.danskespil.gradle.plugins.release-branch' version '0.0.8'
+    id 'dk.danskespil.gradle.plugins.release-branch' version '0.1.2'
 }
 // now you have this extra stage 'branch'
 gw clean build release -Prelease.stage=branch -Prelease.scope=patch
@@ -150,3 +150,13 @@ gw clean build release publishPlugins -Prelease.stage=final -Prelease.scope=patc
 
 ## 0.0.9 
 * Bump underlying ajoberstar plugin
+
+## 0.1.0 
+* Changed branch strategy by shortening the branch name by replacing / with -
+
+## 0.1.1 
+* Changed branch strategy by adding a count to the shortened branch name
+
+## 0.1.2 
+* Changed branch strategy by also replacing _ with -
+
