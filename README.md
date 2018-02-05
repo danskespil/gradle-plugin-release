@@ -126,9 +126,12 @@ gw clean build release -Prelease.stage=branch -Prelease.scope=patch
 
 # Releasing this plugin
 ## To gradles plugin portal
-Note: you need a login to do this
+This is done for you by travis. You must "release" first, e.g. create a tag, and the push to the release branch, e.g. something like this
 ```groovy
-gw clean build release publishPlugins -Prelease.stage=final -Prelease.scope=patch
+git checkout master
+gw clean build release -Prelease.stage=final -Prelease.scope=patch
+git checkout release
+git push
 ```
 
 # Versions
