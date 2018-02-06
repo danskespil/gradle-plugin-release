@@ -131,8 +131,7 @@ This is done for you by travis. You must "release" first, e.g. create a tag, and
 git checkout master
 gw clean build release -Prelease.stage=final -Prelease.scope=patch
 git checkout release
-git merge master
-git push --tags
+git push
 ```
 
 # Versions
@@ -167,6 +166,6 @@ git push --tags
 ## 0.1.3 
 * Allow multiple users to publish to gradle portal
 
-## 0.1.6 
+## 0.1.7 
 * Testing releasing to gradle portal
 
