@@ -70,7 +70,7 @@ Lots of stuff, I am sure, but the overall vision is like so:
 * DONE Replace the current release configuration at some current Danske Spil project with this plugin and validate that it is works the same way
 * DONE When releasing this plugin, use its own code to release it
 * DONE Configure the plugin to (allow for ?) inclusion of branch name in release tags
-* Figure out how multiple gradle plugin portal users can deploy the same plugin
+* DONE Figure out how multiple gradle plugin portal users can deploy the same plugin
 
 # Strategies
 
@@ -162,4 +162,10 @@ git push
 
 ## 0.1.2 
 * Changed branch strategy by also replacing _ with -
+
+## 0.1.3 
+* Allow multiple users to publish to gradle portal
+
+## 0.1.4 
+* Testing releasing to gradle portal
 
