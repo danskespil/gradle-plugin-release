@@ -131,6 +131,7 @@ This is done for you by travis. You must "release" first, e.g. create a tag, and
 git checkout master
 gw clean build release -Prelease.stage=final -Prelease.scope=patch
 git checkout release
+git merge master
 git push
 ```
 
