@@ -132,7 +132,7 @@ git checkout master
 gw clean build release -Prelease.stage=final -Prelease.scope=patch
 git checkout release
 git merge master
-git push
+git push --tags
 ```
 
 # Versions
@@ -167,6 +167,6 @@ git push
 ## 0.1.3 
 * Allow multiple users to publish to gradle portal
 
-## 0.1.4 
+## 0.1.6 
 * Testing releasing to gradle portal
 
